@@ -1,0 +1,44 @@
+const mongoose = require('mongoose');
+
+const veiculoSchema = new mongoose.Schema({
+  modelo: { type: String, required: true },
+  marca: { type: String, required: true },
+  ano: { type: Number, required: true },
+  cor: { type: String, required: true }
+});
+
+const Veiculo = mongoose.model('Veiculo', veiculoSchema);
+
+const telefoneSchema = new mongoose.Schema({
+  numero: { type: String, required: true },
+  tipo: { type: String, required: true },
+  clienteId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cliente', required: true }
+});
+
+const Telefone = mongoose.model('Telefone', telefoneSchema);
+
+const professorSchema = new mongoose.Schema({
+  nome: { type: String, required: true },
+  especialidade: { type: String, required: true },
+  telefone: { type: String, required: true },
+  email: { type: String, required: true },
+});
+
+const Professor = mongoose.model('Professor', professorSchema);
+
+const clienteSchema = new mongoose.Schema({
+  nome: { type: String, required: true },
+  cpf: { type: String, required: true },
+  endereco: { type: String, required: true },
+  telefone: { type: String, required: true },
+  email: { type: String, required: true }
+});
+
+const Cliente = mongoose.model('Cliente', clienteSchema);
+
+module.exports = {
+  Veiculo,
+  Telefone,
+  Professor,
+  Cliente
+};
